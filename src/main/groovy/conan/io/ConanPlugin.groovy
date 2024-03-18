@@ -1,4 +1,4 @@
-package io.conan
+package conan.io
 //  From https://gist.github.com/CAMOBAP795/ed9aa6a7549787b5eea4b2048b896747
 //  with some changes
 //

@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'io.conan'
+group = 'conan.io'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -14,8 +14,8 @@ repositories {
 gradlePlugin {
     plugins {
         conanPlugin {
-            id = 'io.conan'
-            implementationClass = 'io.conan.ConanPluginImpl'
+            id = 'conan.io'
+            implementationClass = 'conan.io.ConanPluginImpl'
         }
     }
 }
