@@ -1,0 +1,22 @@
+[build_requires]
+android_ndk_installer/r26@bincrafters/stable
+
+[settings]
+os=Android
+os.api_level=21
+os_build=Linux
+
+# https://docs.conan.io/en/latest/systems_cross_building/cross_building.html#cross-building-android
+
+# target device
+arch=x86
+
+# builder
+arch_build=x86_64
+
+compiler=clang
+compiler.version=8
+compiler.libcxx=libc++
+
+[options]
+*:pic = True
