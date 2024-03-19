@@ -2,6 +2,20 @@
 
 Simple gradle plugin for conan
 
+# setup 
+
+Install conan via pip
+
+```bash
+pip3 install conan
+```
+
+Copy profiles 
+
+```bash
+cp -r ./profiles ~/.conan2/
+```
+
 # Use
 
 ```groovy
