@@ -87,7 +87,7 @@ class ConanPluginImpl implements Plugin<Project> {
                     commandLine 'conan', 'install', conanfilePath,
                             '--profile', conanProfileFileName,
                             '--settings', "build_type=${params['buildType']}",
-                            '--install-folder', workingDir,
+                            '-of', workingDir,
                             '--build', 'missing'
 
                     inputs.files conanfilePath
@@ -105,7 +105,7 @@ class ConanPluginImpl implements Plugin<Project> {
 
                     doFirst {
                         if (!project.file(conanProfileFileName).exists()) {
-                            def conanProfilePath = "${System.properties['user.home']}/.conan/profiles/${conanProfileFileName}"
+                            def conanProfilePath = "${System.properties['user.home']}/.conan2/profiles/${conanProfileFileName}"
                             assert project.file(conanProfilePath).exists() \
                                 : "Conan profile file \"${conanProfilePath}\" missing please check README.md"
                         }
