@@ -1,4 +1,8 @@
 package conan.io
+
+import org.gradle.api.tasks.Exec
+import org.gradle.api.tasks.Delete
+
 //  From https://gist.github.com/CAMOBAP795/ed9aa6a7549787b5eea4b2048b896747
 //  with some changes
 //
@@ -72,6 +76,8 @@ class ConanPluginImpl implements Plugin<Project> {
 
                 def conanInstallTaskName = "conanInstall${taskSuffix}"
                 println "ConanPlugin: Executing conan install task: ${conanInstallTaskName}"
+
+//                project.setProperty("Conan${abi.capitalize()}ToolchainPath","-DCMAKE_TOOLCHAIN_FILE=${conanOutputDirPath}/conan_toolchain.cmake")
 
                 def conanInstallTask = project.task(conanInstallTaskName, type: Exec) {
                     group 'Conan tasks'
