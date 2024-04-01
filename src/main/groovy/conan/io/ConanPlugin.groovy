@@ -14,9 +14,10 @@ import org.gradle.api.Project
 import groovy.text.SimpleTemplateEngine
 
 class ConanPluginExtension {
-    String conanfile = "src/main/cpp/conanfile.txt"
+    String conanfile = "src/main/cpp/conanfile.py"
     String profile = 'android-${abi}' // TODO maybe support map abi->filename
-    String outputDirPath = '${projectDir}/conan_build/${buildType}/${abi}'
+    String outputDirPath = '${projectDir}/.conan/${buildType}/${abi}/'
+    String cmakePreset = 'conan-android-clang-12-${abi}-${buildType}'
 }
 
 class ConanPluginImpl implements Plugin<Project> {
@@ -41,6 +42,7 @@ class ConanPluginImpl implements Plugin<Project> {
     }
 
     void createTasksForAndroidExternalNativeBuild(Project project) {
+
         android.applicationVariants.all { variant ->
             def engine = new SimpleTemplateEngine()
 
@@ -76,8 +78,6 @@ class ConanPluginImpl implements Plugin<Project> {
 
                 def conanInstallTaskName = "conanInstall${taskSuffix}"
                 println "ConanPlugin: Executing conan install task: ${conanInstallTaskName}"
-
-//                project.setProperty("Conan${abi.capitalize()}ToolchainPath","-DCMAKE_TOOLCHAIN_FILE=${conanOutputDirPath}/conan_toolchain.cmake")
 
                 def conanInstallTask = project.task(conanInstallTaskName, type: Exec) {
                     group 'Conan tasks'
